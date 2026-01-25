@@ -29,7 +29,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && yarn gen:vetur",
     "preview": "vite preview --port 4173",
     "docs:dev": "cd docs && yarn dev",
     "docs:build": "yarn build && cd docs && yarn build",
@@ -38,7 +38,8 @@
     "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'",
     "test:unit": "cypress open --component",
     "test:unit:ci": "cypress run --component --quiet --reporter spec",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "gen:vetur": "vue-int --input src/components --output lib --recursive"
   },
   "devDependencies": {
     "7.css": "^0.21.1",
@@ -56,6 +57,11 @@
     "start-server-and-test": "^1.14.0",
     "terser": "^5.14.2",
     "vite": "^3.0.2",
-    "vue": "^2.7.7"
+    "vue": "^2.7.7",
+    "vue-intellisense": "^1.0.3"
+  },
+  "vetur": {
+    "tags": "lib/tags.json",
+    "attributes": "lib/attributes.json"
   }
 }
